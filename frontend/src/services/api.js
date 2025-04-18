@@ -1,6 +1,7 @@
-const API_BASE = 'http://localhost/psel-monks-backend/wp-json/wp/v2';
+import axios from "axios";
 
-export async function fetchPosts() {
-  const response = await fetch(`${API_BASE}/posts`);
-  return response.json();
-}
+const api = axios.create({
+  baseURL: "http://localhost/psel-monks-backend/wp-json",
+});
+
+export default api;
