@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'HelveticaNeueThin';
+  src: url('./assets/fonts/HelveticaNeueThin.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueRoman';
+  src: url('./assets/fonts/HelveticaNeueRoman.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueLight';
+  src: url('./assets/fonts/HelveticaNeueLight.otf') format('opentype');
+}
+
+.helvetica-thin {
+  font-family: 'HelveticaNeueThin', sans-serif;
+}
+
+.helvetica-roman {
+  font-family: 'HelveticaNeueRoman', sans-serif;
+}
+
+.helvetica-light {
+  font-family: 'HelveticaNeueLight', sans-serif;
+}
