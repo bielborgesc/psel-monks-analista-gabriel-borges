@@ -26,13 +26,13 @@ const Products = () => {
               src={ImageCard1} alt="Paisagem de cidade" 
               className="w-full h-full object-contain"/>
           </div>
-          <div className="w-[271.5px] h-[140px] pl-[8px] pr-[8px] ">
-            <div className=" w-[255.5px] h-[36px] gap-[10px]  font-[400] text-[24px] text-[#0C111D] helvetica-medium leading-[60px] tracking-[0.0em] mb-[20px]">
-              <h4>Lorem ipsum dolor</h4>
-            </div>
-            <div className="w-[255.5px] h-[60px] font-[400] text-[20px] text-[#0C111D] helvetica-light leading-[30px] tracking-[0.0em]">
-              <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
+            <div className="w-[271.5px] h-[140px] pl-[8px] pr-[8px] ">
+              <div className=" w-[255.5px] h-[36px] gap-[10px]  font-[400] text-[24px] text-[#0C111D] helvetica-medium leading-[60px] tracking-[0.0em] mb-[20px]">
+                <h4>Lorem ipsum dolor</h4>
+              </div>
+              <div className="w-[255.5px] h-[60px] font-[400] text-[20px] text-[#0C111D] helvetica-light leading-[30px] tracking-[0.0em]">
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+              </div>
           </div>
         </div>
 
