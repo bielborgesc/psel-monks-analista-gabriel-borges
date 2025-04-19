@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import LogoMonks from '../../assets/hero/LogoMonks.png';
-import Scroll from '../../assets/hero/Scroll.png';
-import BgMonks from '../../assets/hero/BgMonks.png';
+import LogoMonks from '../assets/hero/LogoMonks.png';
+import Scroll from '../assets/hero/Scroll.png';
+import BgMonks from '../assets/hero/BgMonks.png';
 
 const Hero = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
