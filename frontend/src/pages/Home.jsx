@@ -1,6 +1,7 @@
 import AppSection from "../components/AppSection";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
+import ProductsLinks from "../components/ProductsLiks";
 import SimpleGallery from "../components/SimpleGallery";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Products />
       <SimpleGallery />
       <AppSection />
+      <ProductsLinks />
     </div>
   );
 }

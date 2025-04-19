@@ -25,6 +25,11 @@
   src: url('./assets/fonts/HelveticaNeueMedium.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'HelveticaNeueBold';
+  src: url('./assets/fonts/HelveticaNeueBold.otf') format('opentype');
+}
+
 .helvetica-thin {
   font-family: 'HelveticaNeueThin', sans-serif;
 }
@@ -43,4 +48,8 @@
 
 .helvetica-medium {
   font-family: 'HelveticaNeueMedium', sans-serif;
+}
+
+.helvetica-bold {
+  font-family: 'HelveticaNeueBold', sans-serif;
 }

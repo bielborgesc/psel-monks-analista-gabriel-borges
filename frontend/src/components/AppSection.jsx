@@ -4,11 +4,11 @@ import GooglePlay from '../assets/app-section/PlayStore.png';
 const AppSection = () => {
   return (
     <section className="w-full max-w-[1366px] h-[312px] px-[80px] pt-[32px] pb-[64px]">
-      <div className="w-[1206px] h-[216px] bg-[#3C0C60] rounded-[24px] p-[40px] flex items-start justify-between flex gap-[40px]">
+      <div className="w-[1206px] h-[216px] bg-[#3C0C60] rounded-[24px] p-[40px] flex items-center justify-between flex gap-[40px]">
         
         {/* Título e subtítulo */}
         <div className="w-[868.87px] text-[#EAE8E4]">
-          <h2 className="helvetica-medium font-[400] text-[40px] leading-[1] tracking-[0.02em] mb-[16px] items-center">
+          <h2 className="helvetica-medium font-[400] text-[40px] leading-[1] tracking-[0.02em] mb-[16px]">
             Lorem ipsum dolor sit amet consectetur
           </h2>
           <p className="helvetica-light font-[400] text-[24px] leading-[1] tracking-[0.02em]">
