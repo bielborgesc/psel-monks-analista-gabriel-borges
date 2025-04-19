@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import Products from "../components/Products";
 import ProductsLinks from "../components/ProductsLiks";
 import SimpleGallery from "../components/SimpleGallery";
+import SectionCards from "../components/SectionCards";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <SimpleGallery />
       <AppSection />
       <ProductsLinks />
+      <SectionCards />
     </div>
   );
 }
