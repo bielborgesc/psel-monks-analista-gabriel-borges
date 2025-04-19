@@ -1,3 +1,4 @@
+import AppSection from "../components/AppSection";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import SimpleGallery from "../components/SimpleGallery";
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Products />
       <SimpleGallery />
+      <AppSection />
     </div>
   );
 }
