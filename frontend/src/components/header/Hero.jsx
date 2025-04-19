@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import LogoMonks from '../../assets/hero/LogoMonks.png';
+import Scroll from '../../assets/hero/Scroll.png';
+import BgMonks from '../../assets/hero/BgMonks.png';
 
-const HeroLp = () => {
+const Hero = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -9,7 +11,6 @@ const HeroLp = () => {
   return (
     <header className="bg-[#2D2D2D] h-[480px] w-full flex rounded-b-[32px]">
       <div className="w-[860px] h-full pt-[24px] pb-[24px] pl-[80px]">
-
         {/* Header*/}
         <nav className="flex gap-[6px] h-[24px] "> {/*h tem que ser de acordo com o tamanho interno, mudar dps*/}
 
@@ -33,45 +34,47 @@ const HeroLp = () => {
           </div>
 
         </nav>
-      </div>
+        
+        {/* Texto Hero */}
+        <div className="w-[700px] h-[408px]">{/*h tem que ser de acordo com o tamanho interno, mudar dps*/}
+            {/* Titulo e Subtitulo */}
+            <div className="w-[700px] h-[300px] pt-[65px]">
+                <div className="w-[700px] h-[114px] helvetica-heavy font-[400] text-[48px] text-[#EAE8E4] leading-[56px]">
+                  <h1>Lorem ipsum dolor sit amet consectetur</h1>
+                </div>
 
-      {/*
-      <div className="flex items-center space-x-2 font-bold text-2xl tracking-tight">
-        <span className="text-white">.monks</span>
-      </div>
-      
-      <nav className="hidden lg:flex gap-10 text-base font-normal tracking-wide">
-        <a href="#">Categoria 1</a>
-        <a href="#">Categoria 2</a>
-        <a href="#">Categoria 3</a>
-        <a href="#">Categoria 4</a>
-      </nav>
+                <div className="max-w-[600px] h-[81px]">
+                  <div className="helvetica-thin font-[400] text-[24px] text-[#EAE8E4] leading-[28px]">
+                    <h2>
+                      Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra
+                    </h2>
+                  </div>
+                </div>
+            </div>
 
-
-      <button
-        className="lg:hidden text-white"
-        onClick={toggleMenu}
-        aria-label="Abrir menu"
-      >
-        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
-
-      {isMobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-purple-200 text-black p-6 space-y-4 z-50 transition-all">
-          <ul className="space-y-4 font-medium">
-            <li><a href="#">Categoria 1</a></li>
-            <li><a href="#">Categoria 2</a></li>
-            <li><a href="#">Categoria 3</a></li>
-            <li><a href="#">Categoria 4</a></li>
-          </ul>
-          <div className="mt-8 text-sm italic text-center">
-            <p className="inline-block border px-3 py-1 border-black rounded-full">← back</p>
-          </div>
+            {/* Scrool */}
+            <div className="w-[100%] flex justify-center">
+              <div className="w-[72px] h-[100px] pl[1px] pr-[1px]">
+                <img 
+                  src={Scroll}
+                  alt="Imagem Scrool" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
         </div>
-      )}
-      */}
+      </div>
+
+      <div className="w-[506px] h-[480px] flex items-center justify-end">
+      <img 
+        src={BgMonks}
+        alt="Decoração roxa"
+        className="w-[506px] h-[480px] max-w-none object-contain"
+      />
+    </div>
+
     </header>
   );
 };
 
-export default HeroLp;
+export default Hero;
