@@ -1,19 +1,28 @@
-const cards = [
-  {
-    title: "Lorem ipsum dolor sit amet",
-    text: "Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra."
-  },
-  {
-    title: "Lorem ipsum dolor sit amet",
-    text: "Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra."
-  },
-  {
-    title: "Lorem ipsum dolor sit amet",
-    text: "Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra."
-  }
-];
+import { useEffect, useState } from "react";
+import { getSectionCards } from "../services/sectionCards";
+
+// const cards = [
+//   {
+//     title: "Lorem ipsum dolor sit amet",
+//     text: "Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra."
+//   },
+//   {
+//     title: "Lorem ipsum dolor sit amet",
+//     text: "Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra."
+//   },
+//   {
+//     title: "Lorem ipsum dolor sit amet",
+//     text: "Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra."
+//   }
+// ];
 
 const SectionCards = () => {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    getSectionCards().then((data) => setCards(data));
+  }, []);
+
   return (
     <section className="w-full max-w-[1366px] px-[80px] pt-[32px] pb-[64px]">
       <div className="flex gap-[40px]">
@@ -24,9 +33,10 @@ const SectionCards = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="w-[327.33px] h-[36px] text-[24px] font-[400] leading-[36px] text-[#2D2D2D] helvetica-medium">
-                {card.title}
+                {card.title.rendered}
               </h3>
-              <p className="w-[327.33px] h-[126px] text-[20px] leading-[30px] text-[#2D2D2D] helvetica-light">
+              <p  dangerouslySetInnerHTML={{ __html: card.content.rendered }} 
+                className="w-[327.33px] h-[126px] text-[20px] leading-[30px] text-[#2D2D2D] helvetica-light">
                 {card.text}
               </p>
             </div>

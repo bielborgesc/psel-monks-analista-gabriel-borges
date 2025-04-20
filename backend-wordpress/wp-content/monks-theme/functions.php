@@ -61,13 +61,14 @@ function register_custom_post_type_app_section() {
 }
 add_action('init', 'register_custom_post_type_app_section');
 
-// Link de seleção de produtos
-function register_products_links_section_cpt() {
-    register_post_type('products_links_section', [
-        'label' => 'Seção de Links de Produtos',
+// CPT: Section Cards
+function register_custom_post_type_section_cards() {
+    register_post_type('section_cards', [
+        'label' => 'Cards da Seção',
         'public' => true,
         'show_in_rest' => true,
         'supports' => ['title', 'editor'],
+        'menu_icon' => 'dashicons-feedback',
     ]);
 }
-add_action('init', 'register_products_links_section_cpt');
+add_action('init', 'register_custom_post_type_section_cards');
