@@ -9,67 +9,45 @@ const Hero = () => {
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="bg-[#2D2D2D] h-[480px] w-full flex rounded-b-[32px]">
-      <div className="w-[860px] h-full pt-[24px] pb-[24px] pl-[80px]">
-        {/* Header*/}
-        <nav className="flex gap-[6px] h-[24px] "> {/*h tem que ser de acordo com o tamanho interno, mudar dps*/}
+    <header className="bg-[#2D2D2D] w-full h-[480px] flex justify-between rounded-b-[32px] overflow-hidden">
+      {/* Lado esquerdo */}
+      <div className="flex flex-col w-[860px] h-full py-[24px] pl-[80px]">
+      {/* Navegação */}
+      <nav className="flex items-center gap-[40px] h-[24px] mb-[24px]">
+        <img src={LogoMonks} alt=".monks logo" className="w-[140px] h-[24px] object-contain" />
+        <div className="w-[640px]">
+          <ul className="flex tracking-[0.0em] font-[400] text-[20px] text-[#EAE8E4] helvetica-light justify-evenly text-center">
+          {['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4'].map((cat, idx) => (
+            <li key={idx} className="w-[141px] h-[24px] gap-[10px]"><a href="#">{cat}</a></li>
+          ))}
+          </ul>
+        </div>
+      </nav>
 
-          {/* Logo */}
-          <div className="w-[140px] h-[24px]">
-            <img 
-              src={LogoMonks}
-              alt=".monks logo" 
-              className="w-full h-full object-contain"
-            />
-          </div>
+      {/* Container flex que vai centralizar o texto e manter o scroll fixo no fim */}
+      <div className="flex flex-col justify-between flex-1 max-w-[700px] w-full">
+        {/* Título + Subtítulo */}
+        <div>
+          <h1 className="helvetica-heavy text-[48px] leading-[56px] text-[#EAE8E4] font-normal tracking-[0.02em] max-w-[700px]">
+            Lorem ipsum dolor sit amet consectetur
+          </h1>
+          <p className="mt-[16px] text-[24px] leading-[28px] text-[#EAE8E4] font-normal helvetica-thin max-w-[600px]">
+            Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra
+          </p>
+        </div>
 
-          {/* Categorias flex justify-center*/}
-          <div className="w-[640px]">
-            <ul className="flex tracking-[0.0em] font[400] text-[20px] text-[#EAE8E4] helvetica-light justify-evenly text-center">
-              <li className="w-[141px] h-[24px] gap-[10px]"><a href="#">Categoria 1</a></li>
-              <li className="w-[141px] h-[24px] gap-[10px]"><a href="#">Categoria 2</a></li>
-              <li className="w-[141px] h-[24px] gap-[10px]"><a href="#">Categoria 3</a></li>
-              <li className="w-[141px] h-[24px] gap-[10px]"><a href="#">Categoria 4</a></li> 
-            </ul>
-          </div>
-
-        </nav>
-        
-        {/* Texto Hero */}
-        <div className="w-[700px] h-[408px]">{/*h tem que ser de acordo com o tamanho interno, mudar dps*/}
-            {/* Titulo e Subtitulo */}
-            <div className="w-[700px] h-[300px] pt-[65px]">
-                <div className="w-[700px] h-[114px] helvetica-heavy font-[400] text-[48px] text-[#EAE8E4] leading-[56px]">
-                  <h1>Lorem ipsum dolor sit amet consectetur</h1>
-                </div>
-
-                <div className="max-w-[600px] h-[81px]">
-                  <div className="helvetica-thin font-[400] text-[24px] text-[#EAE8E4] leading-[28px]">
-                    <h2>
-                      Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra
-                    </h2>
-                  </div>
-                </div>
-            </div>
-
-            {/* Scrool */}
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[72px] h-[100px] pl[1px] pr-[1px]">
-                <img 
-                  src={Scroll}
-                  alt="Imagem Scrool" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
+        {/* Scroll */}
+        <div className="flex justify-center mt-[24px]">
+          <img src={Scroll} alt="Scroll" className="w-[72px] h-[100px] object-contain" />
         </div>
       </div>
-
-      <div className="w-[506px] h-[480px] flex items-center justify-end">
-      <img 
+    </div>
+    {/* Imagem lateral */}
+    <div className="w-[506px] h-full">
+      <img
         src={BgMonks}
         alt="Decoração roxa"
-        className="w-[506px] h-[480px] max-w-none object-contain"
+        className="w-full h-full object-cover"
       />
     </div>
 
