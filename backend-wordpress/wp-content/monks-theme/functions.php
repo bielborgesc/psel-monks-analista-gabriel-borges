@@ -60,3 +60,14 @@ function register_custom_post_type_app_section() {
     ]);
 }
 add_action('init', 'register_custom_post_type_app_section');
+
+// Link de seleção de produtos
+function register_products_links_section_cpt() {
+    register_post_type('products_links_section', [
+        'label' => 'Seção de Links de Produtos',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'editor'],
+    ]);
+}
+add_action('init', 'register_products_links_section_cpt');

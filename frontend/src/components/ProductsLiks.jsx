@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { getProductsLinksSection } from '../services/productsLinks';
+
 const tags = [
   "Perfumaria", "Corpo e banho", "Hidratante", "Desodorante", "Cabelos",
   "Maquiagem", "Rosto", "Casa", "Infantil", "Shampoo", "Sabonete",
@@ -5,11 +8,25 @@ const tags = [
 ];
 
 const ProductsLinks = () => {
+  const [section, setSection] = useState(null);
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    getProductsLinksSection().then((data) => {
+      setSection(data);
+      const content = data?.content?.rendered || '';
+      const tags = content.replace(/<[^>]+>/g, '').split(',').map(tag => tag.trim());
+      setLinks(tags);
+    });
+  }, []);
+
+  if (!section) return null;
+
   return (
     <div className="w-full max-w-[1366px] px-[80px] py-[32px] mx-auto">
       {/* Título */}
       <h2 className="w-full text-[40px] font-[400] leading-[1] tracking-[0.02em] text-[#2D2D2D] helvetica-medium mb-[40px]">
-        Lorem ipsum dolor sit amet consectetur
+        {section.title.rendered}
       </h2>
 
       {/* Tags */}
