@@ -72,3 +72,25 @@ function register_custom_post_type_section_cards() {
     ]);
 }
 add_action('init', 'register_custom_post_type_section_cards');
+
+function register_footer_info_cpt() {
+    register_post_type('footer_info', [
+        'label' => 'Footer - Informações',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'custom-fields'],
+        'menu_icon' => 'dashicons-share',
+    ]);
+}
+add_action('init', 'register_footer_info_cpt');
+
+function register_footer_links_cpt() {
+    register_post_type('footer_links', [
+        'label' => 'Footer - Links',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'custom-fields'],
+        'menu_icon' => 'dashicons-admin-links',
+    ]);
+}
+add_action('init', 'register_footer_links_cpt');
