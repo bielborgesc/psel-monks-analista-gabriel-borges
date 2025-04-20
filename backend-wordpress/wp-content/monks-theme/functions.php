@@ -49,3 +49,14 @@ function register_custom_post_type_gallery() {
     ]);
 }
 add_action('init', 'register_custom_post_type_gallery');
+
+// CPT: App Section
+function register_custom_post_type_app_section() {
+    register_post_type('app_section', [
+        'label' => 'App Section',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+    ]);
+}
+add_action('init', 'register_custom_post_type_app_section');
