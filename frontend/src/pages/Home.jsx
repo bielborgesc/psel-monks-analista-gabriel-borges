@@ -5,6 +5,7 @@ import ProductsLinks from "../components/ProductsLiks";
 import SimpleGallery from "../components/SimpleGallery";
 import SectionCards from "../components/SectionCards";
 import Form from "../components/Form";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ProductsLinks />
       <SectionCards />
       <Form />
+      <Footer />
     </div>
   );
 }
