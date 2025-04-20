@@ -4,6 +4,7 @@ import Products from "../components/Products";
 import ProductsLinks from "../components/ProductsLiks";
 import SimpleGallery from "../components/SimpleGallery";
 import SectionCards from "../components/SectionCards";
+import Form from "../components/Form";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <AppSection />
       <ProductsLinks />
       <SectionCards />
+      <Form />
     </div>
   );
 }
