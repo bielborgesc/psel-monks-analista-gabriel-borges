@@ -94,3 +94,58 @@ function register_footer_links_cpt() {
     ]);
 }
 add_action('init', 'register_footer_links_cpt');
+
+add_action('rest_api_init', function () {
+    register_rest_route('monks/v1', '/send-form', [
+      'methods' => 'POST',
+      'callback' => 'handle_contact_form',
+      'permission_callback' => '__return_true',
+    ]);
+  });
+  
+  function handle_contact_form($request) {
+    $params = $request->get_json_params();
+  
+    // Captura os dados
+    $nome = sanitize_text_field($params['nome'] ?? '');
+    $email = sanitize_email($params['email'] ?? '');
+    $mensagem = sanitize_textarea_field($params['mensagem'] ?? '');
+    $verificacao = intval($params['verificacao'] ?? 0);
+  
+    // Validação básica
+    if (empty($nome) || empty($email) || empty($mensagem)) {
+      return new WP_Error('missing_fields', 'Preencha todos os campos obrigatórios.', ['status' => 400]);
+    }
+  
+    if ($verificacao !== 427 + 628) {
+      return new WP_Error('invalid_verification', 'Verificação incorreta.', ['status' => 400]);
+    }
+  
+    // Cria um post tipo "mensagem"
+    $post_id = wp_insert_post([
+      'post_type' => 'mensagem',
+      'post_title' => "Mensagem de $nome",
+      'post_content' => $mensagem,
+      'post_status' => 'publish',
+      'meta_input' => [
+        'email' => $email
+      ]
+    ]);
+  
+    if (is_wp_error($post_id)) {
+      return new WP_Error('insert_failed', 'Não foi possível salvar a mensagem.', ['status' => 500]);
+    }
+  
+    return ['message' => 'Mensagem enviada com sucesso.'];
+}
+
+function register_custom_post_type_mensagem() {
+    register_post_type('mensagem', [
+        'label' => 'Mensagens',
+        'public' => true,
+        'show_in_rest' => false, // não precisa aparecer na API
+        'supports' => ['title', 'editor', 'custom-fields'],
+        'menu_icon' => 'dashicons-email'
+    ]);
+}
+add_action('init', 'register_custom_post_type_mensagem');
