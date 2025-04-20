@@ -38,3 +38,14 @@ function register_custom_post_type_products_section() {
 }
 add_action('init', 'register_custom_post_type_products_section');
 
+// CPT: Galeria simples (título e subtítulo da seção)
+function register_custom_post_type_gallery() {
+    register_post_type('gallery', [
+        'label' => 'Galeria',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'menu_icon' => 'dashicons-format-gallery',
+    ]);
+}
+add_action('init', 'register_custom_post_type_gallery');
