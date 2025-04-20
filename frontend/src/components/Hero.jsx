@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LogoMonks from '../assets/hero/LogoMonks.png';
 import Scroll from '../assets/hero/Scroll.png';
 import BgMonks from '../assets/hero/BgMonks.png';
+import { getHeroContent, getCategories } from '../services/hero';
 
 const Hero = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hero, setHero] = useState(null);
+  const [categories, setCategories] = useState([]);
 
-  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  useEffect(() => {
+    getHeroContent().then(setHero);
+    getCategories().then(setCategories);
+  }, []);
+
+  if (!hero || !hero.title || !hero.content) return null;
 
   return (
     <header className="bg-[#2D2D2D] w-full h-[480px] flex justify-between rounded-b-[32px] overflow-hidden">
@@ -17,9 +24,14 @@ const Hero = () => {
         <img src={LogoMonks} alt=".monks logo" className="w-[140px] h-[24px] object-contain" />
         <div className="w-[640px]">
           <ul className="flex tracking-[0.0em] font-[400] text-[20px] text-[#EAE8E4] helvetica-light justify-evenly text-center">
-          {['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4'].map((cat, idx) => (
-            <li key={idx} className="w-[141px] h-[24px] gap-[10px]"><a href="#">{cat}</a></li>
-          ))}
+            {/* {['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4'].map((cat, idx) => (
+              <li key={idx} className="w-[141px] h-[24px] gap-[10px]"><a href="#">{cat}</a></li>
+            ))} */}
+              {categories.map((cat) => (
+                <li key={cat.id} className="w-[141px] h-[24px] gap-[10px]">
+                  <a href={`/categoria/${cat.slug}`}>{cat.name}</a>
+                </li>
+              ))}
           </ul>
         </div>
       </nav>
@@ -29,11 +41,9 @@ const Hero = () => {
         {/* Título + Subtítulo */}
         <div>
           <h1 className="helvetica-heavy text-[48px] leading-[56px] text-[#EAE8E4] font-normal tracking-[0.02em] max-w-[700px]">
-            Lorem ipsum dolor sit amet consectetur
+          {hero.title.rendered}
           </h1>
-          <p className="mt-[16px] text-[24px] leading-[28px] text-[#EAE8E4] font-normal helvetica-thin max-w-[600px]">
-            Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque quis commodo aenean viverra
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: hero.content.rendered }} className="mt-[16px] text-[24px] leading-[28px] text-[#EAE8E4] font-normal helvetica-thin max-w-[600px]"></p>
         </div>
 
         {/* Scroll */}
