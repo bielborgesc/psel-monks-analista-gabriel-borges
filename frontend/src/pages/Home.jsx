@@ -13,8 +13,8 @@ export default function Home() {
       <Hero />
       <Products />
       <SimpleGallery />
-      {/* <AppSection />
-      <ProductsLinks />
+      <AppSection />
+      {/* <ProductsLinks />
       <SectionCards />
       <Form />
       <Footer /> */}
