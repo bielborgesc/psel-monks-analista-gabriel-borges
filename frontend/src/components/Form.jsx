@@ -25,10 +25,8 @@ const Form = () => {
       setStatus({ type: 'error', message: 'Preencha todos os campos obrigatórios.' });
       return;
     }
-    
-    
+
     if (parseInt(formData.resultado) !== soma1 + soma2) {
-      console.log('Resultado:', soma1 + soma2);
       setStatus({ type: 'error', message: 'Verificação incorreta.' });
       return;
     }
@@ -49,20 +47,20 @@ const Form = () => {
   };
 
   return (
-    <section className="w-full max-w-[1366px] h-[584px] bg-[#2D2D2D] px-[80px] py-[64px] flex gap-[40px] items-center justify-between">
+    <section className="w-full max-w-[1366px] bg-[#2D2D2D] px-[24px] md:px-[80px] py-[64px] flex flex-col md:flex-row gap-[40px] items-center justify-between">
       {/* Imagem */}
-      <div className="w-[314.55px] h-[300.87px] flex items-center justify-center">
+      <div className="w-[170px] h-[163px] md:w-[314.55px] md:h-[300.87px] flex items-center justify-center">
         <img src={CallCenter} alt="Call Center" className="w-full h-auto object-contain" />
       </div>
 
       {/* Formulário */}
-      <div className="w-[851.45px] h-[456px] bg-[#EAE8E4] rounded-[24px] p-[24px] flex flex-col gap-[32px] text-[#2D2D2D]">
+      <div className="w-full md:w-[851.45px] bg-[#EAE8E4] rounded-[24px] p-[24px] flex flex-col gap-[32px] text-[#2D2D2D]">
         {/* Título */}
-        <div className="flex flex-col gap-[8px]">
-          <h2 className="text-[40px] tracking-[0.02em] font-[400] helvetica-medium leading-[1]">
+        <div className="flex flex-col gap-[8px] w-full max-w-[312px] md:max-w-none">
+          <h2 className="text-[24px] md:text-[40px] tracking-[0.02em] font-[400] helvetica-medium leading-[24px] md:leading-[1]">
             Lorem ipsum dolor sit amet consectetur
           </h2>
-          <p className="text-[20px] helvetica-light leading-[30px]">
+          <p className="text-[16px] md:text-[20px] helvetica-light leading-[24px] md:leading-[30px]">
             Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque
           </p>
           <p className="text-[16px] helvetica-light leading-[1]">
@@ -71,14 +69,14 @@ const Form = () => {
         </div>
 
         {/* Inputs */}
-        <div className="grid grid-cols-2 gap-[18px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
           <input
             type="text"
             name="nome"
             value={formData.nome}
             onChange={handleChange}
             placeholder="Nome*"
-            className="w-[392.73px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
+            className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
           />
           <input
             type="email"
@@ -86,7 +84,7 @@ const Form = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Email*"
-            className="w-[392.73px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
+            className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
           />
           <input
             type="text"
@@ -94,38 +92,38 @@ const Form = () => {
             value={formData.mensagem}
             onChange={handleChange}
             placeholder="Mensagem*"
-            className="w-[392.73px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light col-span-2"
+            className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
           />
         </div>
 
         {/* Verificação */}
-        <div className="flex items-center gap-[32px]">
-          <span className="w-[281px] text-[24px] leading-[36px] font-[400] helvetica-medium">
+        <div className="w-[264px] md:w-[803.45px] h-auto flex flex-col md:flex-row md:items-center md:justify-between gap-[16px] md:gap-[32px]">
+          <span className="text-[20px] md:text-[24px] leading-[30px] md:leading-[36px] font-[400] helvetica-medium w-[234px] md:w-[281px]">
             Verificação de segurança
           </span>
 
-          <div className="flex items-center gap-[16px] bg-[#DFDCD5] px-[24px] rounded-[8px] h-[42px]">
-            <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma1}</span>
-            <span className="text-[20px] text-[#2D2D2D]">+</span>
-            <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma2}</span>
+          <div className="flex items-center gap-[16px] md:gap-[32px]">
+            <div className="flex items-center justify-center gap-[8px] w-[123px] md:w-[224px] h-[42px] bg-[#DFDCD5] px-[8px] rounded-[8px]">
+              <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma1}</span>
+              <span className="text-[20px] text-[#2D2D2D]">+</span>
+              <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma2}</span>
+            </div>
+            <span className="text-[20px] text-[#2D2D2D]">=</span>
+            <input
+              name="resultado"
+              value={formData.resultado}
+              onChange={handleChange}
+              type="text"
+              placeholder="Resultado*"
+              className="w-[95px] md:w-[234.45px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[16px] leading-[24px] text-[#777777] font-[400] helvetica-light"
+            />
           </div>
-
-          <span className="text-[20px] text-[#2D2D2D]">=</span>
-
-          <input
-            name="resultado"
-            value={formData.resultado}
-            onChange={handleChange}
-            type="text"
-            placeholder="Resultado*"
-            className="w-[392.73px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-          />
         </div>
 
         {/* Botão */}
         <button
           onClick={handleSubmit}
-          className="bg-[#DFBBFE] opacity-50 text-[#2D2D2D] text-[16px] font-semibold px-[40px] py-[8px] rounded-[4px] w-fit mx-auto mt-[16px]"
+          className="bg-[#DFBBFE] opacity-50 text-[#2D2D2D] text-[16px] font-semibold px-[40px] py-[8px] rounded-[4px] w-fit md:w-[144px] mx-auto mt-[16px]"
         >
           Enviar
         </button>
