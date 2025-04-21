@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="w-dvw h-alto bg-[#EAE8E4]">
+    <div className="w-full min-h-screen bg-[#EAE8E4] overflow-x-hidden">
       <Hero />
       {/* <Products />
       <SimpleGallery />
