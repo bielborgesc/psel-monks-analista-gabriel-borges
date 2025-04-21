@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen bg-[#EAE8E4] overflow-x-hidden">
       <Hero />
-      {/* <Products />
-      <SimpleGallery />
+      <Products />
+      {/* <SimpleGallery />
       <AppSection />
       <ProductsLinks />
       <SectionCards />
