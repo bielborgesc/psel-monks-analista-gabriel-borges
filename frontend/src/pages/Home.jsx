@@ -14,8 +14,8 @@ export default function Home() {
       <Products />
       <SimpleGallery />
       <AppSection />
-      {/* <ProductsLinks />
-      <SectionCards />
+      <ProductsLinks />
+      {/* <SectionCards />
       <Form />
       <Footer /> */}
     </div>
