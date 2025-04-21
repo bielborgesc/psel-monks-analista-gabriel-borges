@@ -3,6 +3,7 @@ import LogoMonks from '../assets/hero/LogoMonks.png';
 import Scroll from '../assets/hero/Scroll.png';
 import BgMonks from '../assets/hero/BgMonks.png';
 import { getHeroContent, getCategories } from '../services/hero';
+import  HamburgerIcon  from '../assets/icon/HamburgerIcon.png';
 
 const Hero = () => {
   const [hero, setHero] = useState(null);
@@ -20,7 +21,7 @@ const Hero = () => {
       {/* Lado esquerdo */}
       <div className="flex flex-col w-[860px] h-full py-[24px] pl-[80px]">
       {/* Navegação */}
-      <nav className="flex items-center gap-[40px] h-[24px] mb-[24px]">
+      <nav className="flex items-center gap-[40px] h-[24px] mb-[60px]">
         <img src={LogoMonks} alt=".monks logo" className="w-[140px] h-[24px] object-contain" />
         <div className="w-[640px]">
           <ul className="flex tracking-[0.0em] font-[400] text-[20px] text-[#EAE8E4] helvetica-light justify-evenly text-center">
@@ -47,7 +48,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll */}
-        <div className="flex justify-center mt-[24px]">
+        <div className="flex justify-center">
           <img src={Scroll} alt="Scroll" className="w-[72px] h-[100px] object-contain" />
         </div>
       </div>

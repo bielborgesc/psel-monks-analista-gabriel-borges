@@ -11,13 +11,13 @@ export default function Home() {
   return (
     <div className="w-dvw h-alto bg-[#EAE8E4]">
       <Hero />
-      <Products />
+      {/* <Products />
       <SimpleGallery />
       <AppSection />
       <ProductsLinks />
       <SectionCards />
       <Form />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import Home from './pages/Home';
 
 function App() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="overflow-x-hidden">
       <Home />
     </main>
   );
