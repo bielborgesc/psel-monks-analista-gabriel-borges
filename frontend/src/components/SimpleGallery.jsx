@@ -1,6 +1,3 @@
-import PrediosNaFrenteRio from '../assets/simple-gallery/PrediosNaFrenteRio.png'
-import VariosPredios from '../assets/simple-gallery/VariosPredios.png'
-import PredioFuturista from '../assets/simple-gallery/PredioFuturista.png'
 import { useEffect, useState } from 'react';
 import { getGallery } from '../services/gallery';
 
