@@ -17,7 +17,7 @@ export default function Home() {
       <ProductsLinks />
       <SectionCards />
       <Form />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

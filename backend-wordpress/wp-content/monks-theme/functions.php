@@ -1,8 +1,16 @@
 <?php
+// CORS (para o frontend React acessar a API)
+function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+}
+add_action('init','add_cors_http_header');
+
 // Suporte a imagens destacadas
 add_theme_support('post-thumbnails');
 
-// Hero
+// CPT: Hero
 function register_custom_post_type_hero() {
     register_post_type('hero', [
         'label' => 'Hero',
@@ -61,6 +69,19 @@ function register_custom_post_type_app_section() {
 }
 add_action('init', 'register_custom_post_type_app_section');
 
+// Link de seleção de produtos
+function register_prod_links_section_cpt() {
+    register_post_type('prod_links', [
+        'label' => 'Seção de Links de Produtos',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'editor'],
+        'menu_icon' => 'dashicons-tag'
+    ]);
+    
+}
+add_action('init', 'register_prod_links_section_cpt');
+
 // CPT: Section Cards
 function register_custom_post_type_section_cards() {
     register_post_type('section_cards', [
@@ -73,6 +94,7 @@ function register_custom_post_type_section_cards() {
 }
 add_action('init', 'register_custom_post_type_section_cards');
 
+// CPT: Footer
 function register_footer_info_cpt() {
     register_post_type('footer_info', [
         'label' => 'Footer - Informações',
@@ -95,6 +117,26 @@ function register_footer_links_cpt() {
 }
 add_action('init', 'register_footer_links_cpt');
 
+// Expor os campos personalizados dos CPTs footer_info e footer_links na REST API
+add_action('rest_api_init', function () {
+    $footer_info_fields = ['facebook_url', 'instagram_url', 'twitter_url', 'whatsapp_url'];
+    foreach ($footer_info_fields as $field) {
+        register_meta('post', $field, [
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ]);
+    }
+
+    register_meta('post', 'url', [
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+    ]);
+});
+
+
+// CPT: Formulario
 add_action('rest_api_init', function () {
     register_rest_route('monks/v1', '/send-form', [
       'methods' => 'POST',
@@ -149,3 +191,4 @@ function register_custom_post_type_mensagem() {
     ]);
 }
 add_action('init', 'register_custom_post_type_mensagem');
+

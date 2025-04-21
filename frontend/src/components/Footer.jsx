@@ -17,10 +17,9 @@ const Footer = () => {
   if (!info) return null;
 
   return (
-    <footer className="w-full bg-[#2D2D2D] flex flex-col items-center justify-center pt-[32px] pb-[32px] gap-[32px] text-[#EAE8E4]">
-      
+    <footer className="w-full bg-[#2D2D2D] flex flex-col items-center justify-center pt-[32px] pb-[32px] gap-[32px] text-[#EAE8E4] px-[24px] md:px-0">
       {/* Linha divisória */}
-      <div className="w-[1206px] h-[1px] bg-[#DFBBFE]"></div>
+      <div className="w-full max-w-[1206px] h-[1px] bg-[#DFBBFE]"></div>
 
       {/* Ícones sociais com links se disponíveis */}
       <div className="flex gap-[24px] w-[231px] h-[32px] justify-center items-center">
@@ -54,7 +53,7 @@ const Footer = () => {
         </h4>
 
         {/* Subcategorias dinâmicas */}
-        <div className="flex gap-[40px] flex-wrap justify-center">
+        <div className="flex gap-[16px] flex-wrap justify-center max-w-[300px] md:max-w-none">
           {links.map(link => (
             <a
               key={link.id}
