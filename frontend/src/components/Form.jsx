@@ -1,19 +1,26 @@
-import { useState } from 'react';
-import { sendContactForm } from '../services/form';
+import { useEffect, useState } from 'react';
+import { sendContactForm, getFormConfig } from '../services/form';
 import CallCenter from '../assets/form/CallCenter.png';
 
-const Form = () => {
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    mensagem: '',
-    resultado: ''
-  });
+const soma1 = 427;
+const soma2 = 628;
 
+const Form = () => {
+  const [campos, setCampos] = useState([]);
+  const [formData, setFormData] = useState({});
   const [status, setStatus] = useState(null);
 
-  const soma1 = 427;
-  const soma2 = 628;
+  useEffect(() => {
+    getFormConfig().then((campos) => {
+      setCampos(campos);
+      const camposIniciais = {};
+      campos.forEach(campo => {
+        camposIniciais[campo] = '';
+      });
+      camposIniciais.resultado = ''; // campo fixo de verificação
+      setFormData(camposIniciais);
+    });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,26 +28,20 @@ const Form = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.nome || !formData.email || !formData.mensagem || !formData.resultado) {
-      setStatus({ type: 'error', message: 'Preencha todos os campos obrigatórios.' });
-      return;
-    }
-
     if (parseInt(formData.resultado) !== soma1 + soma2) {
       setStatus({ type: 'error', message: 'Verificação incorreta.' });
       return;
     }
 
     try {
-      await sendContactForm({
-        nome: formData.nome,
-        email: formData.email,
-        mensagem: formData.mensagem,
-        verificacao: parseInt(formData.resultado)
-      });
+      const { resultado, ...dadosParaEnviar } = formData;
+      await sendContactForm({ ...dadosParaEnviar, verificacao: parseInt(formData.resultado) });
 
       setStatus({ type: 'success', message: 'Mensagem enviada com sucesso!' });
-      setFormData({ nome: '', email: '', mensagem: '', resultado: '' });
+      const reset = {};
+      campos.forEach(campo => (reset[campo] = ''));
+      reset.resultado = '';
+      setFormData(reset);
     } catch (err) {
       setStatus({ type: 'error', message: 'Erro ao enviar. Tente novamente.' });
     }
@@ -69,57 +70,44 @@ const Form = () => {
             </p>
           </div>
 
-          {/* Inputs */}
+          {/* Inputs dinâmicos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
-            <input
-              type="text"
-              name="nome"
-              value={formData.nome}
-              onChange={handleChange}
-              placeholder="Nome*"
-              className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email*"
-              className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-            />
-            <input
-              type="text"
-              name="mensagem"
-              value={formData.mensagem}
-              onChange={handleChange}
-              placeholder="Mensagem*"
-              className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-            />
+            {campos.map((campo) => (
+              <input
+                key={campo}
+                name={campo}
+                type="text"
+                value={formData[campo]}
+                onChange={handleChange}
+                placeholder={`${campo.charAt(0).toUpperCase() + campo.slice(1)}*`}
+                className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
+              />
+            ))}
           </div>
 
-        {/* Verificação */}
-        <div className="w-full flex flex-col md:flex-row md:items-center gap-[16px] md:gap-[16px]">
+          {/* Verificação */}
+          <div className="w-full flex flex-col md:flex-row md:items-center gap-[16px] md:gap-[16px]">
             <span className="text-[20px] md:text-[24px] leading-[30px] md:leading-[36px] font-[400] helvetica-medium whitespace-nowrap">
               Verificação de segurança
             </span>
 
-          <div className="flex items-center gap-[16px]">
-            <div className="flex items-center justify-center gap-[8px] w-[123px] md:w-[224px] h-[42px] bg-[#DFDCD5] px-[8px] rounded-[8px]">
-              <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma1}</span>
-              <span className="text-[20px] text-[#2D2D2D]">+</span>
-              <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma2}</span>
+            <div className="flex items-center gap-[16px]">
+              <div className="flex items-center justify-center gap-[8px] w-[123px] md:w-[224px] h-[42px] bg-[#DFDCD5] px-[8px] rounded-[8px]">
+                <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma1}</span>
+                <span className="text-[20px] text-[#2D2D2D]">+</span>
+                <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma2}</span>
+              </div>
+              <span className="text-[20px] text-[#2D2D2D]">=</span>
+              <input
+                name="resultado"
+                value={formData.resultado || ''}
+                onChange={handleChange}
+                type="text"
+                placeholder="Resultado*"
+                className="w-[95px] md:w-[234.45px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[16px] leading-[24px] text-[#777777] font-[400] helvetica-light"
+              />
             </div>
-            <span className="text-[20px] text-[#2D2D2D]">=</span>
-            <input
-              name="resultado"
-              value={formData.resultado}
-              onChange={handleChange}
-              type="text"
-              placeholder="Resultado*"
-              className="w-[95px] md:w-[234.45px] h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[16px] leading-[24px] text-[#777777] font-[400] helvetica-light"
-            />
           </div>
-        </div>
 
           {/* Botão */}
           <button

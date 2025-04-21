@@ -253,3 +253,58 @@ function register_custom_post_type_mensagem() {
 }
 add_action('init', 'register_custom_post_type_mensagem');
 
+// CPT: Form Config
+function register_form_config_cpt() {
+    register_post_type('form_config', [
+        'label' => 'Configuração do Formulário',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'custom-fields'],
+        'menu_icon' => 'dashicons-feedback',
+    ]);
+}
+add_action('init', 'register_form_config_cpt');
+
+// Campo personalizado: campos_formulario
+function register_form_config_meta() {
+    register_post_meta('form_config', 'campos_formulario', [
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+        'auth_callback' => '__return_true',
+    ]);
+}
+add_action('init', 'register_form_config_meta');
+
+// Metabox para facilitar edição no admin
+function add_form_config_meta_box() {
+    add_meta_box(
+        'form_config_campos_meta_box',
+        'Campos do Formulário',
+        'render_form_config_meta_box',
+        'form_config',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_form_config_meta_box');
+
+function render_form_config_meta_box($post) {
+    $valor = get_post_meta($post->ID, 'campos_formulario', true);
+    wp_nonce_field('save_form_config_meta', 'form_config_meta_nonce');
+
+    echo '<p>Digite os nomes dos campos separados por vírgula (ex: nome,email,telefone):</p>';
+    echo '<input type="text" id="campos_formulario" name="campos_formulario" value="' . esc_attr($valor) . '" style="width:100%;" />';
+}
+
+function save_form_config_meta_box($post_id) {
+    if (!isset($_POST['form_config_meta_nonce']) || !wp_verify_nonce($_POST['form_config_meta_nonce'], 'save_form_config_meta')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['campos_formulario'])) {
+        update_post_meta($post_id, 'campos_formulario', sanitize_text_field($_POST['campos_formulario']));
+    }
+}
+add_action('save_post', 'save_form_config_meta_box');
+
