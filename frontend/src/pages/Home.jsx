@@ -12,8 +12,8 @@ export default function Home() {
     <div className="w-full min-h-screen bg-[#EAE8E4] overflow-x-hidden">
       <Hero />
       <Products />
-      {/* <SimpleGallery />
-      <AppSection />
+      <SimpleGallery />
+      {/* <AppSection />
       <ProductsLinks />
       <SectionCards />
       <Form />
