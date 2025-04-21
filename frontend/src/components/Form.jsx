@@ -47,54 +47,55 @@ const Form = () => {
   };
 
   return (
-    <section className="w-full max-w-[1366px] bg-[#2D2D2D] px-[24px] md:px-[80px] py-[64px] flex flex-col md:flex-row gap-[40px] items-center justify-between">
-      {/* Imagem */}
-      <div className="w-[170px] h-[163px] md:w-[314.55px] md:h-[300.87px] flex items-center justify-center">
-        <img src={CallCenter} alt="Call Center" className="w-full h-auto object-contain" />
-      </div>
-
-      {/* Formulário */}
-      <div className="w-full md:w-[851.45px] bg-[#EAE8E4] rounded-[24px] p-[24px] flex flex-col gap-[32px] text-[#2D2D2D]">
-        {/* Título */}
-        <div className="flex flex-col gap-[8px] w-full max-w-[312px] md:max-w-none">
-          <h2 className="text-[24px] md:text-[40px] tracking-[0.02em] font-[400] helvetica-medium leading-[24px] md:leading-[1]">
-            Lorem ipsum dolor sit amet consectetur
-          </h2>
-          <p className="text-[16px] md:text-[20px] helvetica-light leading-[24px] md:leading-[30px]">
-            Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque
-          </p>
-          <p className="text-[16px] helvetica-light leading-[1]">
-            *Lorem ipsum dolor sit amet consectetur
-          </p>
+    <section className="w-full flex justify-center bg-[#2D2D2D] px-[24px] md:px-[80px] py-[64px]">
+      <div className="w-full max-w-[1366px] flex flex-col md:flex-row gap-[40px] items-center justify-center">
+        {/* Imagem */}
+        <div className="w-[170px] h-[163px] md:w-[314.55px] md:h-[300.87px] flex items-center justify-center">
+          <img src={CallCenter} alt="Call Center" className="w-full h-auto object-contain" />
         </div>
 
-        {/* Inputs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
-          <input
-            type="text"
-            name="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            placeholder="Nome*"
-            className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-          />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email*"
-            className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-          />
-          <input
-            type="text"
-            name="mensagem"
-            value={formData.mensagem}
-            onChange={handleChange}
-            placeholder="Mensagem*"
-            className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
-          />
-        </div>
+        {/* Formulário */}
+        <div className="w-full md:w-[851.45px] bg-[#EAE8E4] rounded-[24px] p-[24px] flex flex-col gap-[32px] text-[#2D2D2D]">
+          {/* Título */}
+          <div className="flex flex-col gap-[8px] w-full max-w-[312px] md:max-w-none">
+            <h2 className="text-[24px] md:text-[40px] tracking-[0.02em] font-[400] helvetica-medium leading-[24px] md:leading-[1]">
+              Lorem ipsum dolor sit amet consectetur
+            </h2>
+            <p className="text-[16px] md:text-[20px] helvetica-light leading-[24px] md:leading-[30px]">
+              Lorem ipsum dolor sit amet consectetur. Semper orci adipiscing faucibus sit scelerisque
+            </p>
+            <p className="text-[16px] helvetica-light leading-[1]">
+              *Lorem ipsum dolor sit amet consectetur
+            </p>
+          </div>
+
+          {/* Inputs */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
+            <input
+              type="text"
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              placeholder="Nome*"
+              className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email*"
+              className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
+            />
+            <input
+              type="text"
+              name="mensagem"
+              value={formData.mensagem}
+              onChange={handleChange}
+              placeholder="Mensagem*"
+              className="w-full h-[42px] px-[10px] py-[6px] rounded-[8px] bg-white text-[20px] text-[#777777] font-[400] helvetica-light"
+            />
+          </div>
 
         {/* Verificação */}
         <div className="w-full flex flex-col md:flex-row md:items-center gap-[16px] md:gap-[16px]">
@@ -120,20 +121,21 @@ const Form = () => {
           </div>
         </div>
 
-        {/* Botão */}
-        <button
-          onClick={handleSubmit}
-          className="bg-[#DFBBFE] opacity-50 text-[#2D2D2D] text-[16px] font-semibold px-[40px] py-[8px] rounded-[4px] w-fit md:w-[144px] mx-auto mt-[16px]"
-        >
-          Enviar
-        </button>
+          {/* Botão */}
+          <button
+            onClick={handleSubmit}
+            className="bg-[#DFBBFE] opacity-50 text-[#2D2D2D] text-[16px] font-semibold px-[40px] py-[8px] rounded-[4px] w-fit md:w-[144px] mx-auto mt-[16px]"
+          >
+            Enviar
+          </button>
 
-        {/* Feedback */}
-        {status && (
-          <p className={`text-center ${status.type === 'error' ? 'text-red-500' : 'text-green-600'}`}>
-            {status.message}
-          </p>
-        )}
+          {/* Feedback */}
+          {status && (
+            <p className={`text-center ${status.type === 'error' ? 'text-red-500' : 'text-green-600'}`}>
+              {status.message}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
