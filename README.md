@@ -10,7 +10,8 @@ A proposta é construir um site institucional responsivo e funcional com uma arq
 
 ## 🔄 Demonstração (GIF)
 
-[GIF AQUI]
+- Desk [https://github.com/bielborgesc/psel-monks-analista-gabriel-borges/blob/main/Demonstra%C3%A7%C3%A3o/Desk.gif]
+- Mobile [https://github.com/bielborgesc/psel-monks-analista-gabriel-borges/blob/main/Demonstra%C3%A7%C3%A3o/Mobile.gif]
 
 ---
 
