@@ -97,12 +97,12 @@ const Form = () => {
         </div>
 
         {/* Verificação */}
-        <div className="w-[264px] md:w-[803.45px] h-auto flex flex-col md:flex-row md:items-center md:justify-between gap-[16px] md:gap-[32px]">
-          <span className="text-[20px] md:text-[24px] leading-[30px] md:leading-[36px] font-[400] helvetica-medium w-[234px] md:w-[281px]">
-            Verificação de segurança
-          </span>
+        <div className="w-full flex flex-col md:flex-row md:items-center gap-[16px] md:gap-[16px]">
+            <span className="text-[20px] md:text-[24px] leading-[30px] md:leading-[36px] font-[400] helvetica-medium whitespace-nowrap">
+              Verificação de segurança
+            </span>
 
-          <div className="flex items-center gap-[16px] md:gap-[32px]">
+          <div className="flex items-center gap-[16px]">
             <div className="flex items-center justify-center gap-[8px] w-[123px] md:w-[224px] h-[42px] bg-[#DFDCD5] px-[8px] rounded-[8px]">
               <span className="text-[20px] text-[#7D26C9] helvetica-medium">{soma1}</span>
               <span className="text-[20px] text-[#2D2D2D]">+</span>
