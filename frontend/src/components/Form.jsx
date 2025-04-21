@@ -50,7 +50,7 @@ const Form = () => {
     <section className="w-full flex justify-center bg-[#2D2D2D] px-[24px] md:px-[80px] py-[64px]">
       <div className="w-full max-w-[1366px] flex flex-col md:flex-row gap-[40px] items-center justify-center">
         {/* Imagem */}
-        <div className="w-[170px] h-[163px] md:w-[314.55px] md:h-[300.87px] flex items-center justify-center">
+        <div className="w-[312px] h-[300px] flex items-center justify-center">
           <img src={CallCenter} alt="Call Center" className="w-full h-auto object-contain" />
         </div>
 
